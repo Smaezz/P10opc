@@ -10,9 +10,11 @@ const Slider = () => {
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
   );
+  // ajout d'une constante avec le nombre d'article pour supprimer le quatriéme qui n'existe pas
+  const eventSlide = data?.focus?.length
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length ? index + 1 : 0),
+      () => setIndex(index < eventSlide -1 ? index + 1 : 0),
       5000
     );
   };
@@ -45,7 +47,8 @@ const Slider = () => {
                   key={`${event.id}`}
                   type="radio"
                   name="radio-button"
-                  checked={idx === radioIdx}
+               //   checked={idx === radioIdx}      
+                  checked={index === radioIdx}
                 />
               ))}
             </div>

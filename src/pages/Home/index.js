@@ -13,7 +13,12 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
+  // const { last } = useData()
+  const { data } = useData();                            // last ne correspond à rien on remplace par data
+  let last = null;
+  if (data && data.events) {                             // last renvoi null sauf si 
+    last = data.events[data.events.length - 1];
+  }
   return <>
     <header>
       <Menu />
