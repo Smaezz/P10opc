@@ -16,10 +16,10 @@ const EventList = () => {
   const filteredEvents = (
      
     // (!type
-    // ? data?.events
+    // ? data?.events 
     //  : data?.events) || []) 
 
-   type ? data?.events?.filter((event) => event.type === type) : data?.events) || []   // new code
+    (type? data?.events?.filter((event) => event.type === type) : data?.events) || [])   // new code
 
    .filter((event, index) => {                    
     if (
@@ -66,7 +66,7 @@ const EventList = () => {
           <div className="Pagination">
             {[...Array(pageNumber || 0)].map((_, n) => (
               // eslint-disable-next-line react/no-array-index-key
-              <a key={n} href="#events" onClick={() => setCurrentPage(n + 1)}>
+              <a key={n} href="#events" onClick={() => setCurrentPage(n+1)}>
                 {n + 1}
               </a>
             ))}
@@ -77,4 +77,4 @@ const EventList = () => {
   );
 };
 
-export default EventList;
+export default EventList;   

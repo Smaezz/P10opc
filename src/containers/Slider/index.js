@@ -8,9 +8,9 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
-    new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+    new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
   );
-  // ajout d'une constante avec le nombre d'article pour supprimer le quatriéme qui n'existe pas
+  // ajout d'une constante qui vérifie le nombre d'articles pour supprimer le quatriéme qui n'existe pas
   const eventSlide = data?.focus?.length
   const nextCard = () => {
     setTimeout(
@@ -44,11 +44,13 @@ const Slider = () => {
             <div className="SlideCard__pagination">
               {byDateDesc.map((_, radioIdx) => (
                 <input
-                  key={`${event.id}`}
+                  //  key={`${event.id}`}
+                  key={event.id}
                   type="radio"
                   name="radio-button"
                //   checked={idx === radioIdx}      
                   checked={index === radioIdx}
+                  readOnly={index !== radioIdx}
                 />
               ))}
             </div>
